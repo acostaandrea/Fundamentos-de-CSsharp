@@ -30,6 +30,30 @@ static void MostrarRecomendación(IBebidaAlcoholica bebida)
 }*/
 
 CervezaBD cervezaBD = new CervezaBD();
+
+//insertamos nueva cerveza
+/*{
+    Cerveza cerveza = new Cerveza(15, "Pale ale");
+    cerveza.Marca = "Minerva";
+    cerveza.Alcohol = 6;
+    cervezaBD.Add(cerveza);
+}*/
+//edita datos cerveza
+/*{
+    Cerveza cerveza = new Cerveza(15, "Pale ale");
+    cerveza.Marca = "Minerva";
+    cerveza.Alcohol = 5;
+    cervezaBD.Edit(cerveza, 4);
+}*/
+
+//eliminar registro
+{   
+    cervezaBD.Delete(4);
+}
+
+
+
+//obtener todas las cervezas
 var cervezas = cervezaBD.Get();
 foreach(var cerveza in cervezas)
 {
