@@ -75,12 +75,81 @@ foreach(var cerveza in cervezas)
 string url = "https://jsonplaceholder.typicode.com/posts";
 HttpClient client = new HttpClient();
 
-var htppResponse = await client.GetAsync(url);
+//HTTP GET
+/*var htppResponse = await client.GetAsync(url);
 
 if (htppResponse.IsSuccessStatusCode)
 {
     var content = await htppResponse.Content.ReadAsStringAsync();
     List<Post> posts = JsonSerializer.Deserialize<List<Post>>(content);
+    foreach(var objeto in posts)
+    {
+        Console.WriteLine(objeto.title);
+    }
+}*/
+
+// HTTP POST
+/*Post post = new Post()
+{
+    userId = 50,
+    body = "Hola como estan",
+    title = "pueba"
+};
+
+var data = JsonSerializer.Serialize<Post>(post);
+HttpContent content = new StringContent(data, System.Text.Encoding.UTF8, "application/json");
+
+var httpResponse = await client.PostAsync(url, content);
+
+if (httpResponse.IsSuccessStatusCode)
+{
+    var result = await httpResponse.Content.ReadAsStringAsync();
+
+    var postResult =JsonSerializer.Deserialize<Post>(result);
+   
+}*/
+
+//HTTP PUT
+string url2 = "https://jsonplaceholder.typicode.com/posts/1";
+/*Post post = new Post()
+{
+    userId = 50,
+    body = "Hola como estan",
+    title = "pueba"
+};
+
+var data = JsonSerializer.Serialize<Post>(post);
+HttpContent content = new StringContent(data, System.Text.Encoding.UTF8, "application/json");
+
+var httpResponse = await client.PutAsync(url2, content);
+
+if (httpResponse.IsSuccessStatusCode)
+{
+    var result = await httpResponse.Content.ReadAsStringAsync();
+
+    var postResult =JsonSerializer.Deserialize<Post>(result);
+   
+}*/
+
+//HTTP DELETE
+Post post = new Post()
+{
+    userId = 50,
+    body = "Hola como estan",
+    title = "pueba"
+};
+
+//var data = JsonSerializer.Serialize<Post>(post);
+//HttpContent content = new StringContent(data, System.Text.Encoding.UTF8, "application/json");
+
+var httpResponse = await client.DeleteAsync(url2);
+
+if (httpResponse.IsSuccessStatusCode)
+{
+    var result = await httpResponse.Content.ReadAsStringAsync();
+
+    //var postResult = JsonSerializer.Deserialize<Post>(result);
+
 }
 
 
