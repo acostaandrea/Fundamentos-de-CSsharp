@@ -1,4 +1,7 @@
 ﻿using Fundamentos_C_.Models;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
 /*int[] numeros = new int[10] {1,2,3,4,5,6,7,8,9,0};
 for (int i = 0; i < numeros.Length; i++)
@@ -29,7 +32,7 @@ static void MostrarRecomendación(IBebidaAlcoholica bebida)
 
 }*/
 
-CervezaBD cervezaBD = new CervezaBD();
+//CervezaBD cervezaBD = new CervezaBD();
 
 //insertamos nueva cerveza
 /*{
@@ -47,15 +50,39 @@ CervezaBD cervezaBD = new CervezaBD();
 }*/
 
 //eliminar registro
-{   
+/*{   
     cervezaBD.Delete(4);
-}
+}*/
 
 
 
 //obtener todas las cervezas
-var cervezas = cervezaBD.Get();
+/*var cervezas = cervezaBD.Get();
 foreach(var cerveza in cervezas)
 {
     Console.WriteLine(cerveza.Nombre);
+}*/
+
+//Cerveza cerveza = new Cerveza(10, "Cerveza");
+
+//string miJson = JsonSerializer.Serialize(cerveza);
+//File.WriteAllText("objeto.txt", miJson);
+
+//string miJson = File.ReadAllText("objeto.txt");
+
+//Cerveza cerveza = JsonSerializer.Deserialize<Cerv//eza>(miJson);
+
+string url = "https://jsonplaceholder.typicode.com/posts";
+HttpClient client = new HttpClient();
+
+var htppResponse = await client.GetAsync(url);
+
+if (htppResponse.IsSuccessStatusCode)
+{
+    var content = await htppResponse.Content.ReadAsStringAsync();
+    List<Post> posts = JsonSerializer.Deserialize<List<Post>>(content);
 }
+
+
+
+
