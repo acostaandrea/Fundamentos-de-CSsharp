@@ -3,6 +3,7 @@ using Fundamentos_C_;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 /*int[] numeros = new int[10] {1,2,3,4,5,6,7,8,9,0};
 for (int i = 0; i < numeros.Length; i++)
@@ -153,7 +154,7 @@ if (httpResponse.IsSuccessStatusCode)
 
 }*/
 
-{
+/*{
     var cerveza = new Cerveza()
     { Alcohol = 5, Cantidad = 500, Marca = "Colima", Nombre = "Ticus" };
 
@@ -162,7 +163,69 @@ if (httpResponse.IsSuccessStatusCode)
     Fundamentos_C_.Service.SendRequest<Post> service = new Fundamentos_C_.Service.SendRequest<Post>();
 
     var cervezaRespuesta = await service.Send(post);
-}
+}*/
+
+//List<int> numeros = new List<int>() { 1, 5, 7, 89, 6, 8 };
+
+//var numero7 = numeros.Where(d => d == 7).FirstOrDefault();
+
+/*var numerosOrdenados = numeros.OrderBy(d => d);
+
+foreach (var numero in numerosOrdenados)
+{
+    Console.WriteLine(numero);
+}*/
+
+//var total = numeros.Sum(d => d);
+
+List<Bar> bares = new List<Bar>()
+{
+    new Bar("El bar")
+    {
+        cervezas = new List<Cerveza>()
+        {
+             new Cerveza(){ Alcohol=7, Cantidad=10, Nombre="Pale Ale", Marca="Minerva"},
+             new Cerveza(){ Alcohol = 8, Cantidad = 10, Nombre = "Ticus", Marca = "Colima"},
+             new Cerveza(){ Alcohol = 7, Cantidad = 10, Nombre = "Stout", Marca = "Minerva" },
+
+        }
+    },
+    new Bar("El bar 2")
+    {
+        cervezas = new List<Cerveza>()
+        {
+             new Cerveza(){ Alcohol = 8, Cantidad = 10, Nombre = "Ticus", Marca = "Colima"},
+             new Cerveza(){ Alcohol = 6, Cantidad = 10, Nombre = "Piedra Lisa", Marca = "Colima" }
+
+        }
+    }
+};
+
+List<Cerveza> cervezas = new List<Cerveza>()
+{
+    new Cerveza(){ Alcohol=7, Cantidad=10, Nombre="Pale Ale", Marca="Minerva"},
+    new Cerveza(){ Alcohol = 8, Cantidad = 10, Nombre = "Ticus", Marca = "Colima"},
+    new Cerveza(){ Alcohol = 7, Cantidad = 10, Nombre = "Stout", Marca = "Minerva" },
+    new Cerveza(){ Alcohol = 6, Cantidad = 10, Nombre = "Piedra Lisa", Marca = "Colima" }
+};
+
+/*var cervezasOrdenadas = from d in cervezas
+                        where d.Nombre == "Pale Ale" && d.Marca == "Minerva"
+                        orderby d.Nombre
+                        select d;
+
+foreach(var cerveza in cervezas)
+{
+    Console.WriteLine(cerveza.Nombre + cerveza.Marca);
+}*/
+
+var bar = (from d in bares
+          where d.cervezas.Where(c => c.Nombre == "Ticus").Count() > 0
+          select d).ToList();
+
+
+
+
 
 
 

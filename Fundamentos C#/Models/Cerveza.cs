@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fundamentos_C_.Models
 {
-    internal class Cerveza : Bebida, IBebidaAlcoholica
+    public class Cerveza : Bebida, IBebidaAlcoholica
 
     {
         public int Alcohol { get; set; }
