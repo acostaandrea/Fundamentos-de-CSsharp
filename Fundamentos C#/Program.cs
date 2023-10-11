@@ -1,4 +1,5 @@
 ﻿using Fundamentos_C_.Models;
+using Fundamentos_C_;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -72,8 +73,8 @@ foreach(var cerveza in cervezas)
 
 //Cerveza cerveza = JsonSerializer.Deserialize<Cerv//eza>(miJson);
 
-string url = "https://jsonplaceholder.typicode.com/posts";
-HttpClient client = new HttpClient();
+//string url = "https://jsonplaceholder.typicode.com/posts";
+//HttpClient client = new HttpClient();
 
 //HTTP GET
 /*var htppResponse = await client.GetAsync(url);
@@ -110,7 +111,7 @@ if (httpResponse.IsSuccessStatusCode)
 }*/
 
 //HTTP PUT
-string url2 = "https://jsonplaceholder.typicode.com/posts/1";
+//string url2 = "https://jsonplaceholder.typicode.com/posts/1";
 /*Post post = new Post()
 {
     userId = 50,
@@ -132,17 +133,17 @@ if (httpResponse.IsSuccessStatusCode)
 }*/
 
 //HTTP DELETE
-Post post = new Post()
+/*Post post = new Post()
 {
     userId = 50,
     body = "Hola como estan",
     title = "pueba"
-};
+};*/
 
 //var data = JsonSerializer.Serialize<Post>(post);
 //HttpContent content = new StringContent(data, System.Text.Encoding.UTF8, "application/json");
 
-var httpResponse = await client.DeleteAsync(url2);
+/*var httpResponse = await client.DeleteAsync(url2);
 
 if (httpResponse.IsSuccessStatusCode)
 {
@@ -150,7 +151,21 @@ if (httpResponse.IsSuccessStatusCode)
 
     //var postResult = JsonSerializer.Deserialize<Post>(result);
 
+}*/
+
+{
+    var cerveza = new Cerveza()
+    { Alcohol = 5, Cantidad = 500, Marca = "Colima", Nombre = "Ticus" };
+
+    var post = new Post() { body = "soy un body", title = "hola", userId = 50 };
+
+    Fundamentos_C_.Service.SendRequest<Post> service = new Fundamentos_C_.Service.SendRequest<Post>();
+
+    var cervezaRespuesta = await service.Send(post);
 }
+
+
+
 
 
 
