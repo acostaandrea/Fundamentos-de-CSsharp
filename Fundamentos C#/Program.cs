@@ -4,6 +4,8 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using Fundamentos_C_.Service;
+using Fundamentos_C_.Errors;
 
 /*int[] numeros = new int[10] {1,2,3,4,5,6,7,8,9,0};
 for (int i = 0; i < numeros.Length; i++)
@@ -154,6 +156,8 @@ if (httpResponse.IsSuccessStatusCode)
 
 }*/
 
+// GENERICS
+
 /*{
     var cerveza = new Cerveza()
     { Alcohol = 5, Cantidad = 500, Marca = "Colima", Nombre = "Ticus" };
@@ -164,6 +168,9 @@ if (httpResponse.IsSuccessStatusCode)
 
     var cervezaRespuesta = await service.Send(post);
 }*/
+
+
+//LINQ
 
 //List<int> numeros = new List<int>() { 1, 5, 7, 89, 6, 8 };
 
@@ -178,7 +185,7 @@ foreach (var numero in numerosOrdenados)
 
 //var total = numeros.Sum(d => d);
 
-List<Bar> bares = new List<Bar>()
+/*List<Bar> bares = new List<Bar>()
 {
     new Bar("El bar")
     {
@@ -209,7 +216,7 @@ List<Cerveza> cervezas = new List<Cerveza>()
     new Cerveza(){ Alcohol = 6, Cantidad = 10, Nombre = "Piedra Lisa", Marca = "Colima" }
 };
 
-/*var cervezasOrdenadas = from d in cervezas
+var cervezasOrdenadas = from d in cervezas
                         where d.Nombre == "Pale Ale" && d.Marca == "Minerva"
                         orderby d.Nombre
                         select d;
@@ -217,11 +224,37 @@ List<Cerveza> cervezas = new List<Cerveza>()
 foreach(var cerveza in cervezas)
 {
     Console.WriteLine(cerveza.Nombre + cerveza.Marca);
-}*/
+
 
 var bar = (from d in bares
           where d.cervezas.Where(c => c.Nombre == "Ticus").Count() > 0
-          select d).ToList();
+          select d).ToList();*/
+
+
+// CONTROL DE SITUACIONES INESPERADAS
+
+try
+{
+    var SearcherBeer = new SearcherBeer();
+    var cantidad = SearcherBeer.GetCantidad("jsdnfjsdh");
+    Console.WriteLine("Todo bien");
+
+}
+catch (BeerNotFoundException ex)
+{
+    Console.WriteLine(ex.Message);
+
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+
+}
+finally
+{
+    Console.WriteLine("Se termino");
+}
+
 
 
 
