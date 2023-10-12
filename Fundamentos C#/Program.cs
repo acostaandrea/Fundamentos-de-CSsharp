@@ -233,7 +233,7 @@ var bar = (from d in bares
 
 // CONTROL DE SITUACIONES INESPERADAS
 
-try
+/*try
 {
     var SearcherBeer = new SearcherBeer();
     var cantidad = SearcherBeer.GetCantidad("jsdnfjsdh");
@@ -253,8 +253,35 @@ catch (Exception ex)
 finally
 {
     Console.WriteLine("Se termino");
-}
+}*/
 
+// DELEGADOS
+
+public class Program
+{
+
+    delegate void Mostrar(string cadena);
+
+    static async Task Main(string[] args)
+    {
+        Mostrar mostrar = Show;
+        HacerAlgo(mostrar);
+
+    }
+
+    static void HacerAlgo(Mostrar funcionFinal)
+    {
+        Console.WriteLine("haga algo");
+        funcionFinal("Se envio desde otra funcion");
+
+    }
+
+    static void Show(string cad)
+    {
+        Console.WriteLine("hola soy un delegado");
+
+    }
+}
 
 
 
