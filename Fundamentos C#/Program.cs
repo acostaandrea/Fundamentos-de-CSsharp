@@ -257,31 +257,54 @@ finally
 
 // DELEGADOS
 
-public class Program
+/*public class Program
 {
 
-    delegate void Mostrar(string cadena);
+    
 
     static async Task Main(string[] args)
     {
-        Mostrar mostrar = Show;
+        Func<string, int> mostrar = Show;        
         HacerAlgo(mostrar);
-
     }
 
-    static void HacerAlgo(Mostrar funcionFinal)
+    static void HacerAlgo(Func<string,int> funcionFinal)
     {
         Console.WriteLine("haga algo");
-        funcionFinal("Se envio desde otra funcion");
-
+        Console.WriteLine(funcionFinal("Se envio desde otra funcion"));
     }
 
-    static void Show(string cad)
+    public static int Show(string cad)    {
+        return cad.Count();
+    }
+
+    public static void Show(string cad, string cad2)
     {
-        Console.WriteLine("hola soy un delegado");
+        Console.WriteLine(cad + cad2);
+    } 
+    
+}*/
 
-    }
+// PREDICATE
+
+/*var numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8 };
+var myPredicate = new Predicate<int>(IsEven);
+Predicate<int> negativePredicate = x => !myPredicate(x);
+var dividers = numbers.FindAll(negativePredicate);
+
+dividers.ForEach(d => Console.WriteLine(d));
+
+static bool IsEven(int number)
+{
+    return number % 2 == 0;
 }
+
+ */
+
+
+
+
+
 
 
 
